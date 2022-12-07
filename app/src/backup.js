@@ -1,12 +1,17 @@
+
 let imagemDaEstrada;
 let imagemDoAtor;
 let imagemCarro;
 let imagemCarro2;
 let imagemCarro3;
 
+
+// list imagem carros
+let imagemCarros = [imagemCarro,imagemCarro2,imagemCarro3];
+
 // ator paramers
-let xAtor = 100;
-let yAtor = 360;
+let xAtor = 250;
+let yAtor = 366;
 let larguraAtor = 30;
 let alturaAtor = 30;
 
@@ -15,37 +20,16 @@ let larguraCarro = 50;
 let alturaCarro = 40;
 let velocidadeCarro = 2;
 
-// Position cars 1
-let xCarro = 600;
-let yCarro = 40;
-
-// Position car 2
-let xCarro2 = 0;
-let yCarro2 = 100;
-
-// Position cars 3
-let xCarro3 = 600;
-let yCarro3 = 150;
-
-// Position cars 4
-let xCarro4 = 600;
-let yCarro4 = 215;
-
-// Position cars 5
-let xCarro5 = 0;
-let yCarro5 = 265;
-
-// Position cars 6
-let xCarro6 = 600;
-let yCarro6 = 320;
-
+// List Y and X cars positions
+let yCarros = [40,100,150,215,265,320];
+let xCarros = [600,0,600,600,0,600]
 
 function preload(){
   imagemDaEstrada = loadImage("images/estrada.png")
   imagemDoAtor = loadImage("images/ator-1.png")
-  imagemCarro = loadImage("images/carro-1.png")
-  imagemCarro2 = loadImage("images/carro-2.png")
-  imagemCarro3 = loadImage("images/carro-3.png")
+  imagemCarros[0] = loadImage("images/carro-1.png")
+  imagemCarros[1] = loadImage("images/carro-2.png")
+  imagemCarros[2] = loadImage("images/carro-3.png")
 }
 
 function setup() {
@@ -58,59 +42,74 @@ function draw() {
   mostraCarro();
   movimentaCarro();
   movimentaAtor();
-  loopCarro();
+  voltaPosicaoInicialCarro();
+  Win();
 }
 
 function mostraAtor(){
   image(imagemDoAtor, xAtor, yAtor, larguraAtor,alturaAtor);
 }
 function mostraCarro(){
-  image(imagemCarro, xCarro, yCarro, larguraCarro, alturaCarro);
-  image(imagemCarro2, xCarro2, yCarro2, larguraCarro, alturaCarro);
-  image(imagemCarro3, xCarro3, yCarro3, larguraCarro, alturaCarro);
-  image(imagemCarro2, xCarro4, yCarro4, larguraCarro, alturaCarro);
-  image(imagemCarro, xCarro5, yCarro5, larguraCarro, alturaCarro);
-  image(imagemCarro3, xCarro6, yCarro6, larguraCarro, alturaCarro);
+  image(imagemCarros[0], xCarros[0], yCarros[0], larguraCarro, alturaCarro);
+  image(imagemCarros[1], xCarros[1], yCarros[1], larguraCarro, alturaCarro);
+  image(imagemCarros[2], xCarros[2], yCarros[2], larguraCarro, alturaCarro);
+  image(imagemCarros[1], xCarros[3], yCarros[3], larguraCarro, alturaCarro);
+  image(imagemCarros[0], xCarros[4], yCarros[4], larguraCarro, alturaCarro);
+  image(imagemCarros[2], xCarros[5], yCarros[5], larguraCarro, alturaCarro);
 }
 
 
 
 
 function movimentaCarro(){
-  xCarro -= velocidadeCarro +4;
-  xCarro2 += velocidadeCarro +4;
-  xCarro3 -= velocidadeCarro +1;
-  xCarro4 -= velocidadeCarro +2;
-  xCarro5 += velocidadeCarro +2;
-  xCarro6 -= velocidadeCarro +3;
+  xCarros[0] -= velocidadeCarro +4;
+  xCarros[1] += velocidadeCarro +4;
+  xCarros[2] -= velocidadeCarro +1;
+  xCarros[3] -= velocidadeCarro +2.7;
+  xCarros[4] += velocidadeCarro +2;
+  xCarros[5] -= velocidadeCarro +3;
 }
+// loop carro
 
+function voltaPosicaoInicialCarro(){
+  if(xCarros[0] < -30){
+    xCarros[0] = 600;
+  }
+  if(xCarros[1] > 630){
+    xCarros[1] = -20;
+  }
+  if(xCarros[2] < -30){
+    xCarros[2] = 600;
+  }
+  if(xCarros[3] < -30){
+    xCarros[3] = 600;
+  }
+  if(xCarros[4] > 600){
+    xCarros[4] = -20;
+  }
+  if(xCarros[5] < -30){
+    xCarros[5] = 600;
+  }
 
-
-
-
-
+}
 
 function movimentaAtor(){
   if(keyIsDown(UP_ARROW)){
-    yAtor -= 2;
+    yAtor -= 4;
   }
   else if(keyIsDown(DOWN_ARROW)){
-    yAtor += 2;
+    yAtor += 4;
+  }
+  else if(keyIsDown(LEFT_ARROW)){
+    xAtor -= 4;
+  }
+  else if(keyIsDown(RIGHT_ARROW)){
+    xAtor += 4;
   }
 }
-function loopCarro(){
-  
-}
 
-if(xCarro < -30,xCarro2 > 630,xCarro3 < -30,xCarro4 < -30, xCarro5 > 600,xCarro6 < -30){
-    xCarro = 600;
-    xCarro2 = -20;
-    xCarro3 = 6;
-    xCarro4 = 6 ;
-    xCarro5 = -20;
-    xCarro6 = 6;
+function Win (){
+  if(yAtor < 0){
+    yAtor = 366;
+  }
 }
-  
-  
-   
