@@ -10,13 +10,10 @@ let xCarros = [600,0,600,600,0,600]
 // unit cars
 
 function mostraCarro(){
-    image(imagemCarros[0], xCarros[0], yCarros[0], larguraCarro, alturaCarro);
-    image(imagemCarros[1], xCarros[1], yCarros[1], larguraCarro, alturaCarro);
-    image(imagemCarros[2], xCarros[2], yCarros[2], larguraCarro, alturaCarro);
-    image(imagemCarros[1], xCarros[3], yCarros[3], larguraCarro, alturaCarro);
-    image(imagemCarros[0], xCarros[4], yCarros[4], larguraCarro, alturaCarro);
-    image(imagemCarros[2], xCarros[5], yCarros[5], larguraCarro, alturaCarro);
-}
+    for(let i = 0; i < imagemCarros.length; i++){
+      image(imagemCarros[i], xCarros[i], yCarros[i], larguraCarro, alturaCarro);   
+    }
+  }
   
   
 // moviment to car
