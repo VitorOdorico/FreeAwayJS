@@ -1,4 +1,23 @@
+let imagemDaEstrada;
+let imagemDoAtor;
+let imagemCarro;
+let imagemCarro2;
+let imagemCarro3;
+let imagemCarro4;
+let imagemCarro5;
+let imagemCarro6;
 
+
+
+
+// list imagem carros
+let imagemCarros = [imagemCarro,imagemCarro2,imagemCarro3,imagemCarro4,imagemCarro5,imagemCarro6];
+
+// ator paramers
+let xAtor = 243;
+let yAtor = 366;
+let larguraAtor = 30;
+let alturaAtor = 30;
 
 // carro paramers
 let larguraCarro = 50;
@@ -9,6 +28,16 @@ let velocidadeCarros = [6,6, 3, 4.7,4,5];
 let yCarros = [40,100,150,215,265,320];
 let xCarros = [600,0,600,600,0,600]
 
+function preload(){
+  imagemDaEstrada = loadImage("images/estrada.png")
+  imagemDoAtor = loadImage("images/ator-1.png")
+  imagemCarros[0] = loadImage("images/carro-1.png")
+  imagemCarros[1] = loadImage("images/carro-2.png")
+  imagemCarros[2] = loadImage("images/carro-3.png")
+  imagemCarros[3] = loadImage("images/carro-2.png")
+  imagemCarros[4] = loadImage("images/carro-1.png")
+  imagemCarros[5] = loadImage("images/carro-3.png")
+}
 
 function setup() {
   createCanvas(500, 400);
@@ -27,7 +56,9 @@ function draw() {
   marcaPontos();
 }
 
-
+function mostraAtor(){
+  image(imagemDoAtor, xAtor, yAtor, larguraAtor,alturaAtor);
+}
 function mostraCarro(){
   for(let i = 0; i < imagemCarros.length; i++){
     image(imagemCarros[i], xCarros[i], yCarros[i], larguraCarro, alturaCarro);   
@@ -38,6 +69,13 @@ function mostraCarro(){
 
 
 function movimentaCarro(){
+
+//     for(let i = 0;i < imagemCarros.length; i + 1){
+//      xCarros[i] -= velocidadeCarros[i];
+      
+//     }
+    
+
     xCarros[0] -= velocidadeCarros[0];
     xCarros[1] -= velocidadeCarros[1];
     xCarros[2] -= velocidadeCarros[2];
@@ -69,6 +107,37 @@ function voltaPosicaoInicialCarro(){
 
 }
 
+function movimentaAtor(){
+  if(keyIsDown(UP_ARROW)){
+    yAtor -= 4;
+  }
+  else if(keyIsDown(DOWN_ARROW)){
+    yAtor += 4;
+  }
+  else if(keyIsDown(LEFT_ARROW)){
+    xAtor -= 4;
+  }
+  else if(keyIsDown(RIGHT_ARROW)){
+    xAtor += 4;
+  }
+}
+
+function margemBordas (){
+  if(yAtor < 2){
+    yAtor = 366;
+    xAtor = 243;
+  }
+  if(yAtor > 400){
+    yAtor = 366;
+   
+  }
+  if(xAtor < 2){
+    xAtor = 2;
+  }
+  if(xAtor > 470){
+    xAtor = 470;
+  }
+}
 
 
 function verificarColisao(){
