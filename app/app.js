@@ -1,4 +1,3 @@
-
 function setup() {
   createCanvas(500, 400);
 }
@@ -10,5 +9,8 @@ function draw() {
   movimentaCarro();
   movimentaAtor();
   voltaPosicaoInicialCarro();
-  Win();
+  margemBordas();
+  verificarColisao();
+  placar();
+  marcaPontos();
 }
